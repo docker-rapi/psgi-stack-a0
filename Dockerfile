@@ -100,4 +100,4 @@ RUN cpanm \
   Try::Tiny \
   WebService::Mattermost \
   YAML::XS \
-&& rm -rf .cpanm/
+&& rm -rf ~/.cpanm/
