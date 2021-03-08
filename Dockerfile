@@ -12,8 +12,18 @@ MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-00
 # --
 
-
+#
 # Current stack "A0" libs, in no particular order:
+#
+
+# packages which fail tests and currently must be force installed:
+RUN cpanm --force \
+  Amazon::MWS \
+  Amazon::MWS::Client \
+  Net::Server \
+&& rm -rf ~/.cpanm/
+
+# packages which install properly
 RUN cpanm \
   Archive::Zip \
   aliased \
@@ -66,8 +76,6 @@ RUN cpanm \
   Type::Tiny \
   YAML \
   HTML::Diff \
-  Amazon::MWS \
-  Amazon::MWS::Client \
   Catalyst::Plugin::RunAfterRequest \
   Data::Dump \
   Data::Dx \
@@ -101,3 +109,4 @@ RUN cpanm \
   WebService::Mattermost \
   YAML::XS \
 && rm -rf ~/.cpanm/
+
