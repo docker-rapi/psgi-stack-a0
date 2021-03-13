@@ -2,19 +2,22 @@ FROM rapi/psgi:1.3400
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # --
-# rapi/psgi "stack" version is psgi-1.3400-a0-00:
+# rapi/psgi "stack" version is psgi-1.3400-a0-01:
 #
 #   psgi-1.3400 : based on rapi/psgi:1.3400
 #   a0          : this docker image is named "rapi/psgi-stack-a0"
-#   00          : sub version 00
+#   00          : sub version 01
 #
 # This is an informational/convention only datapoint:
-ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-00
+ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-01
 # --
 
 #
 # Current stack "A0" libs, in no particular order:
 #
+
+# ironically pull later RapidApp for now (to get 1.3401)
+RUN cpanm RapidApp && rm -rf ~/.cpanm/
 
 # packages which fail tests and currently must be force installed:
 RUN cpanm --force \
