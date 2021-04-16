@@ -2,28 +2,54 @@ FROM rapi/psgi:1.3400
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # --
-# rapi/psgi "stack" version is psgi-1.3400-a0-01:
+# rapi/psgi "stack" version is psgi-1.3400-a0-02:
 #
 #   psgi-1.3400 : based on rapi/psgi:1.3400
 #   a0          : this docker image is named "rapi/psgi-stack-a0"
-#   00          : sub version 01
+#   02          : sub version 02
 #
 # This is an informational/convention only datapoint:
-ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-01
+ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-02
 # --
 
 #
 # Current stack "A0" libs, in no particular order:
 #
 
+# Install Debian packages noninteractively.
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Install rapi-psgi extras.
+RUN rapi-install-extras
+
+# Update apt-get metadata.
+RUN apt-get update
+
+# Upgrade existing packages to the latest versions.
+RUN apt-get -y upgrade
+
+# Install additional packages of interest.
+RUN apt-get -y install \
+  less \
+  man-db \
+  postgresql-common \
+&& :
+
+# Setup PostgreSQL apt repository.
+RUN echo "" | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+
+# Install latest PostgreSQL client.
+RUN apt-get -y install postgresql-client
+
 # ironically pull later RapidApp for now (to get 1.3401)
 RUN cpanm RapidApp && rm -rf ~/.cpanm/
 
 # packages which fail tests and currently must be force installed:
-RUN cpanm --force \
+RUN cpanm --notest --force \
   Amazon::MWS \
   Amazon::MWS::Client \
   Net::Server \
+  Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
 
 # packages which install properly
@@ -61,6 +87,7 @@ RUN cpanm \
   Log::Any \
   Log::Contextual::WarnLogger \
   Math::PercentChange \
+  Moo \
   Moose \
   MooseX::AttributeShortcuts \
   MooseX::Types::LoadableClass \
@@ -80,6 +107,7 @@ RUN cpanm \
   YAML \
   HTML::Diff \
   Catalyst::Plugin::RunAfterRequest \
+  Catalyst::Plugin::SimpleCAS \
   Data::Dump \
   Data::Dx \
   Data::Printer \
@@ -103,6 +131,7 @@ RUN cpanm \
   Spreadsheet::ParseExcel \
   Spreadsheet::ParseXLSX \
   Starman \
+  Term::ReadKey \
   Term::ReadLine \
   Term::Size::Any \
   Text::CSV_XS \
