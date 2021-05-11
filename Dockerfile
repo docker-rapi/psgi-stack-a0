@@ -2,14 +2,14 @@ FROM rapi/psgi:1.3400
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # --
-# rapi/psgi "stack" version is psgi-1.3400-a0-03:
+# rapi/psgi "stack" version is psgi-1.3400-a0-04:
 #
 #   psgi-1.3400 : based on rapi/psgi:1.3400
 #   a0          : this docker image is named "rapi/psgi-stack-a0"
-#   03          : sub version 03
+#   04          : sub version 04
 #
 # This is an informational/convention only datapoint:
-ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-03
+ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-04
 # --
 
 #
@@ -143,4 +143,4 @@ RUN cpanm \
 && rm -rf ~/.cpanm/
 
 
-RUN cpanm DBIC-Violator-0.900.tar.gz && rm -rf .cpanm/
+RUN cpanm http://www.cpan.org/authors/id/V/VA/VANSTYN/DBIC-Violator-0.900.tar.gz && rm -rf .cpanm/
