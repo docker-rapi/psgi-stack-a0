@@ -114,10 +114,12 @@ RUN cpanm \
   Data::TableReader \
   DateTime::Format::Flexible \
   Devel::NYTProf \
+  Digest::MD5 \
   Digest::SHA1 \
   Email::Address \
   Email::MIME::CreateHTML \
   Email::Sender \
+  Email::Valid \
   HTML::Diff \
   HTML::Entities \
   HTML::FormatText::WithLinks \
@@ -135,12 +137,12 @@ RUN cpanm \
   Term::ReadLine \
   Term::Size::Any \
   Text::CSV_XS \
+  Text::Password::Pronounceable \
   Text::Trim \
   Tie::Hash::Indexed \
   Try::Tiny \
   WebService::Mattermost \
   YAML::XS \
 && rm -rf ~/.cpanm/
-
 
 RUN cpanm http://www.cpan.org/authors/id/V/VA/VANSTYN/DBIC-Violator-0.900.tar.gz && rm -rf .cpanm/
