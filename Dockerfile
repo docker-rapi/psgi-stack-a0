@@ -136,6 +136,7 @@ RUN cpanm \
   Term::ReadKey \
   Term::ReadLine \
   Term::Size::Any \
+  Test::Postgresql58 \
   Text::CSV_XS \
   Text::Password::Pronounceable \
   Text::Trim \
