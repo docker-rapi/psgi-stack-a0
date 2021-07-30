@@ -54,38 +54,62 @@ RUN cpanm --notest --force \
 
 # packages which install properly
 RUN cpanm \
-  Archive::Zip \
   aliased \
+  Archive::Zip \
   Benchmark::Timer \
   Carp::Always \
+  Catalyst::Plugin::RunAfterRequest \
+  Catalyst::Plugin::SimpleCAS \
   CGI::Expand \
   Config::Settings \
+  Data::Dump \
+  Data::Dx \
+  Data::Printer \
+  Data::TableReader \
   DateTime \
   DateTime::Format::Duration \
   DateTime::Format::Flexible \
+  DateTime::Format::Flexible \
   DateTime::Format::Pg \
   DBD::Pg \
+  DBIx::Class::AuditAny \
   DBIx::Class::Candy \
   DBIx::Class::Cursor::Cached \
   DBIx::Class::Helper::Row::SelfResultSet \
   DBIx::Class::Helpers \
+  DBIx::Class::Helpers \
   DBIx::Class::QueryLog \
   DBIx::Class::ResultDDL \
-  DBIx::Class::TimeStamp \
-  DBIx::Class::AuditAny \
-  DBIx::Class::Helpers \
   DBIx::Class::Schema::Diff \
   DBIx::Class::StateMigrations \
   DBIx::Class::TimeStamp \
+  DBIx::Class::TimeStamp \
   Devel::Confess \
   Devel::DDCWarn \
+  Devel::NYTProf \
+  Digest::MD5 \
+  Digest::SHA1 \
+  Email::Address \
+  Email::MIME::CreateHTML \
+  Email::Sender \
+  Email::Valid \
+  HTML::Diff \
+  HTML::Diff \
+  HTML::Entities \
+  HTML::FormatText::WithLinks \
+  HTML::FromANSI \
   HTTP::Request \
   HTTP::Request::AsCGI \
   JSON \
+  JSON::XS \
   lib::relative \
   Lingua::EN::Nickname \
   Log::Any \
+  Log::Any \
+  Log::Any::Adapter::Daemontools \
+  Log::Any::Adapter::TAP \
   Log::Contextual::WarnLogger \
+  LWP::UserAgent \
   Math::PercentChange \
   Moo \
   Moose \
@@ -97,51 +121,27 @@ RUN cpanm \
   PadWalker \
   Parallel::ForkManager \
   Path::Class \
+  Plack::Builder \
   Plack::Middleware \
   RapidApp::Util \
-  String::TT \
-  Text::Trim \
-  Tie::Hash::Indexed \
-  Text::Trim \
-  Type::Tiny \
-  YAML \
-  HTML::Diff \
-  Catalyst::Plugin::RunAfterRequest \
-  Catalyst::Plugin::SimpleCAS \
-  Data::Dump \
-  Data::Dx \
-  Data::Printer \
-  Data::TableReader \
-  DateTime::Format::Flexible \
-  Devel::NYTProf \
-  Digest::MD5 \
-  Digest::SHA1 \
-  Email::Address \
-  Email::MIME::CreateHTML \
-  Email::Sender \
-  Email::Valid \
-  HTML::Diff \
-  HTML::Entities \
-  HTML::FormatText::WithLinks \
-  HTML::FromANSI \
-  JSON::XS \
-  LWP::UserAgent \
-  Log::Any \
-  Log::Any::Adapter::Daemontools \
-  Log::Any::Adapter::TAP \
-  Plack::Builder \
   Spreadsheet::ParseExcel \
   Spreadsheet::ParseXLSX \
   Starman \
+  String::TT \
   Term::ReadKey \
   Term::ReadLine \
   Term::Size::Any \
   Text::CSV_XS \
   Text::Password::Pronounceable \
   Text::Trim \
+  Text::Trim \
+  Text::Trim \
+  Tie::Hash::Indexed \
   Tie::Hash::Indexed \
   Try::Tiny \
+  Type::Tiny \
   WebService::Mattermost \
+  YAML \
   YAML::XS \
 && rm -rf ~/.cpanm/
 
