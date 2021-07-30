@@ -69,7 +69,6 @@ RUN cpanm \
   DateTime \
   DateTime::Format::Duration \
   DateTime::Format::Flexible \
-  DateTime::Format::Flexible \
   DateTime::Format::Pg \
   DBD::Pg \
   DBIx::Class::AuditAny \
@@ -77,12 +76,10 @@ RUN cpanm \
   DBIx::Class::Cursor::Cached \
   DBIx::Class::Helper::Row::SelfResultSet \
   DBIx::Class::Helpers \
-  DBIx::Class::Helpers \
   DBIx::Class::QueryLog \
   DBIx::Class::ResultDDL \
   DBIx::Class::Schema::Diff \
   DBIx::Class::StateMigrations \
-  DBIx::Class::TimeStamp \
   DBIx::Class::TimeStamp \
   Devel::Confess \
   Devel::DDCWarn \
@@ -94,7 +91,6 @@ RUN cpanm \
   Email::Sender \
   Email::Valid \
   HTML::Diff \
-  HTML::Diff \
   HTML::Entities \
   HTML::FormatText::WithLinks \
   HTML::FromANSI \
@@ -104,7 +100,6 @@ RUN cpanm \
   JSON::XS \
   lib::relative \
   Lingua::EN::Nickname \
-  Log::Any \
   Log::Any \
   Log::Any::Adapter::Daemontools \
   Log::Any::Adapter::TAP \
@@ -134,9 +129,6 @@ RUN cpanm \
   Text::CSV_XS \
   Text::Password::Pronounceable \
   Text::Trim \
-  Text::Trim \
-  Text::Trim \
-  Tie::Hash::Indexed \
   Tie::Hash::Indexed \
   Try::Tiny \
   Type::Tiny \
