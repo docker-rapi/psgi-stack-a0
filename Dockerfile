@@ -66,6 +66,7 @@ RUN cpanm \
   Data::Dx \
   Data::Printer \
   Data::TableReader \
+  Date::RetentionPolicy \
   DateTime \
   DateTime::Format::Duration \
   DateTime::Format::Flexible \
@@ -94,6 +95,7 @@ RUN cpanm \
   HTML::Entities \
   HTML::FormatText::WithLinks \
   HTML::FromANSI \
+  HTML::FromText \
   HTTP::Request \
   HTTP::Request::AsCGI \
   JSON \
@@ -109,6 +111,8 @@ RUN cpanm \
   Moo \
   Moose \
   MooseX::AttributeShortcuts \
+  MooseX::FileAttribute \
+  MooseX::SimpleConfig \
   MooseX::Types::LoadableClass \
   MooseX::Types::Moose \
   Net::LDAP \
@@ -116,6 +120,7 @@ RUN cpanm \
   PadWalker \
   Parallel::ForkManager \
   Path::Class \
+  PDF::API2 \
   Plack::Builder \
   Plack::Middleware \
   RapidApp::Util \
@@ -126,9 +131,11 @@ RUN cpanm \
   Term::ReadKey \
   Term::ReadLine \
   Term::Size::Any \
+  Test::Postgresql58 \
   Text::CSV_XS \
   Text::Password::Pronounceable \
   Text::Trim \
+  Tie::FS \
   Tie::Hash::Indexed \
   Try::Tiny \
   Type::Tiny \
