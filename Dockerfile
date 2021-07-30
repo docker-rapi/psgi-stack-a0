@@ -30,9 +30,11 @@ RUN apt-get -y upgrade
 
 # Install additional packages of interest.
 RUN apt-get -y install \
+  colordiff \
   less \
   man-db \
   postgresql-common \
+  strace \
 && :
 
 # Setup PostgreSQL apt repository.
