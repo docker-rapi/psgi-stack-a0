@@ -144,4 +144,6 @@ RUN cpanm \
   YAML::XS \
 && rm -rf ~/.cpanm/
 
+RUN cpanm Data::TableReader::Decoder::HTML || (cd ~/.cpanm/latest-build/Data-TableReader-Decoder-HTML-0.010 && perl -pi -e 's/\b0\.09\b/0.009/g' META.json META.yml MYMETA.json MYMETA.yml Makefile Makefile.PL dist.ini && perl Makefile.PL && make && make test && make install)
+
 RUN cpanm http://www.cpan.org/authors/id/V/VA/VANSTYN/DBIC-Violator-0.900.tar.gz && rm -rf .cpanm/
