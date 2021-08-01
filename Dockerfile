@@ -30,9 +30,11 @@ RUN apt-get -y upgrade
 
 # Install additional packages of interest.
 RUN apt-get -y install \
+  colordiff \
   less \
   man-db \
   postgresql-common \
+  strace \
 && :
 
 # Setup PostgreSQL apt repository.
@@ -54,65 +56,36 @@ RUN cpanm --notest --force \
 
 # packages which install properly
 RUN cpanm \
-  Archive::Zip \
   aliased \
+  Archive::Zip \
   Benchmark::Timer \
   Carp::Always \
+  Catalyst::Plugin::RunAfterRequest \
+  Catalyst::Plugin::SimpleCAS \
   CGI::Expand \
   Config::Settings \
+  Data::Dump \
+  Data::Dx \
+  Data::Printer \
+  Data::TableReader \
+  Date::RetentionPolicy \
   DateTime \
   DateTime::Format::Duration \
   DateTime::Format::Flexible \
   DateTime::Format::Pg \
   DBD::Pg \
+  DBIx::Class::AuditAny \
   DBIx::Class::Candy \
   DBIx::Class::Cursor::Cached \
   DBIx::Class::Helper::Row::SelfResultSet \
   DBIx::Class::Helpers \
   DBIx::Class::QueryLog \
   DBIx::Class::ResultDDL \
-  DBIx::Class::TimeStamp \
-  DBIx::Class::AuditAny \
-  DBIx::Class::Helpers \
   DBIx::Class::Schema::Diff \
   DBIx::Class::StateMigrations \
   DBIx::Class::TimeStamp \
   Devel::Confess \
   Devel::DDCWarn \
-  HTTP::Request \
-  HTTP::Request::AsCGI \
-  JSON \
-  lib::relative \
-  Lingua::EN::Nickname \
-  Log::Any \
-  Log::Contextual::WarnLogger \
-  Math::PercentChange \
-  Moo \
-  Moose \
-  MooseX::AttributeShortcuts \
-  MooseX::Types::LoadableClass \
-  MooseX::Types::Moose \
-  Net::LDAP \
-  Package::Stash \
-  PadWalker \
-  Parallel::ForkManager \
-  Path::Class \
-  Plack::Middleware \
-  RapidApp::Util \
-  String::TT \
-  Text::Trim \
-  Tie::Hash::Indexed \
-  Text::Trim \
-  Type::Tiny \
-  YAML \
-  HTML::Diff \
-  Catalyst::Plugin::RunAfterRequest \
-  Catalyst::Plugin::SimpleCAS \
-  Data::Dump \
-  Data::Dx \
-  Data::Printer \
-  Data::TableReader \
-  DateTime::Format::Flexible \
   Devel::NYTProf \
   Digest::MD5 \
   Digest::SHA1 \
@@ -124,25 +97,55 @@ RUN cpanm \
   HTML::Entities \
   HTML::FormatText::WithLinks \
   HTML::FromANSI \
+  HTML::FromText \
+  HTTP::Request \
+  HTTP::Request::AsCGI \
+  JSON \
   JSON::XS \
-  LWP::UserAgent \
+  lib::relative \
+  Lingua::EN::Nickname \
   Log::Any \
   Log::Any::Adapter::Daemontools \
   Log::Any::Adapter::TAP \
+  Log::Contextual::WarnLogger \
+  LWP::UserAgent \
+  Math::PercentChange \
+  Moo \
+  Moose \
+  MooseX::AttributeShortcuts \
+  MooseX::FileAttribute \
+  MooseX::SimpleConfig \
+  MooseX::Types::LoadableClass \
+  MooseX::Types::Moose \
+  Net::LDAP \
+  Package::Stash \
+  PadWalker \
+  Parallel::ForkManager \
+  Path::Class \
+  PDF::API2 \
   Plack::Builder \
+  Plack::Middleware \
+  RapidApp::Util \
   Spreadsheet::ParseExcel \
   Spreadsheet::ParseXLSX \
   Starman \
+  String::TT \
   Term::ReadKey \
   Term::ReadLine \
   Term::Size::Any \
+  Test::Postgresql58 \
   Text::CSV_XS \
   Text::Password::Pronounceable \
   Text::Trim \
+  Tie::FS \
   Tie::Hash::Indexed \
   Try::Tiny \
+  Type::Tiny \
   WebService::Mattermost \
+  YAML \
   YAML::XS \
 && rm -rf ~/.cpanm/
+
+RUN cpanm Data::TableReader::Decoder::HTML || (cd ~/.cpanm/latest-build/Data-TableReader-Decoder-HTML-0.010 && perl -pi -e 's/\b0\.09\b/0.009/g' META.json META.yml MYMETA.json MYMETA.yml Makefile Makefile.PL dist.ini && perl Makefile.PL && make && make test && make install)
 
 RUN cpanm http://www.cpan.org/authors/id/V/VA/VANSTYN/DBIC-Violator-0.900.tar.gz && rm -rf .cpanm/
