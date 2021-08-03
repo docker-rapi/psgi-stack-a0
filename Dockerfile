@@ -36,6 +36,7 @@ RUN apt-get -y upgrade
 RUN apt-get -y install \
   colordiff \
   less \
+  libterm-readkey-perl \
   man-db \
   postgresql-common \
   strace \
