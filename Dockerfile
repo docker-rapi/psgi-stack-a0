@@ -56,6 +56,7 @@ RUN cpanm --notest --force \
   Amazon::MWS \
   Amazon::MWS::Client \
   Net::Server \
+  Schedule::Cron \
   Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
 
