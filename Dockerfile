@@ -10,6 +10,10 @@ MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 #
 # This is an informational/convention only datapoint:
 ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-06
+#
+# Standard environment variables:
+ENV SHELL="/bin/bash"
+ENV USER="root"
 # --
 
 #
@@ -32,6 +36,7 @@ RUN apt-get -y upgrade
 RUN apt-get -y install \
   colordiff \
   less \
+  libterm-readkey-perl \
   man-db \
   postgresql-common \
   strace \
@@ -51,6 +56,7 @@ RUN cpanm --notest --force \
   Amazon::MWS \
   Amazon::MWS::Client \
   Net::Server \
+  Schedule::Cron \
   Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
 
@@ -142,6 +148,7 @@ RUN cpanm \
   Try::Tiny \
   Type::Tiny \
   WebService::Mattermost \
+  WWW::Scripter \
   YAML \
   YAML::XS \
 && rm -rf ~/.cpanm/
