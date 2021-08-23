@@ -2,14 +2,14 @@ FROM rapi/psgi:1.3400
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # --
-# rapi/psgi "stack" version is psgi-1.3400-a0-06:
+# rapi/psgi "stack" version is psgi-1.3400-a0-07:
 #
 #   psgi-1.3400 : based on rapi/psgi:1.3400
 #   a0          : this docker image is named "rapi/psgi-stack-a0"
-#   06          : sub version 06
+#   07          : sub version 07
 #
 # This is an informational/convention only datapoint:
-ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-06
+ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3400-a0-07
 #
 # Standard environment variables:
 ENV SHELL="/bin/bash"
