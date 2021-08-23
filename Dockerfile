@@ -148,6 +148,7 @@ RUN cpanm \
   Try::Tiny \
   Type::Tiny \
   WebService::Mattermost \
+  WWW::Scripter \
   YAML \
   YAML::XS \
 && rm -rf ~/.cpanm/
