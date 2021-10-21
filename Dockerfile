@@ -58,15 +58,6 @@ RUN cpanm --notest --force \
   Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
 
-# Workaround bad CPAN distribution metadata.
-RUN cpanm Data::TableReader Data::TableReader::Decoder::HTML \
-  || ( \
-    cd ~/.cpanm/latest-build/Data-TableReader-Decoder-HTML-0.010 \
-    && perl -pi -e 's/\b0\.09\b/0.009/g' META.json META.yml MYMETA.json MYMETA.yml Makefile Makefile.PL dist.ini \
-    && perl Makefile.PL && make && make test && make install \
-  ) \
-&& rm -rf ~/.cpanm/
-
 # packages which install properly
 RUN cpanm \
   Algorithm::CheckDigits \
@@ -84,6 +75,7 @@ RUN cpanm \
   Data::Dx \
   Data::Printer \
   Data::TableReader \
+  Data::TableReader::Decoder::HTML \
   Date::RetentionPolicy \
   DateTime \
   DateTime::Format::Duration \
