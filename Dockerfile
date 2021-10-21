@@ -51,9 +51,6 @@ RUN apt-get -y install postgresql-client
 
 # packages which fail tests and currently must be force installed:
 RUN cpanm --notest --force \
-  Amazon::MWS \
-  Amazon::MWS::Client \
-  Net::Server \
   Schedule::Cron \
   Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
@@ -71,6 +68,8 @@ RUN cpanm Data::TableReader Data::TableReader::Decoder::HTML \
 RUN cpanm \
   Algorithm::CheckDigits \
   aliased \
+  Amazon::MWS \
+  Amazon::MWS::Client \
   Archive::Zip \
   Benchmark::Timer \
   Carp::Always \
@@ -132,6 +131,7 @@ RUN cpanm \
   MooseX::Types::LoadableClass \
   MooseX::Types::Moose \
   Net::LDAP \
+  Net::Server \
   Package::Stash \
   PadWalker \
   Parallel::ForkManager \
