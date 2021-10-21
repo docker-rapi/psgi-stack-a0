@@ -51,6 +51,9 @@ RUN apt-get -y install postgresql-client
 
 # packages which fail tests and currently must be force installed:
 RUN cpanm --notest --force \
+  Furl \
+  OAuth2::Google::Plus \
+  Plack::App::Proxy \
   Schedule::Cron \
   Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
