@@ -69,6 +69,7 @@ RUN cpanm Data::TableReader Data::TableReader::Decoder::HTML \
 
 # packages which install properly
 RUN cpanm \
+  Algorithm::CheckDigits \
   aliased \
   Archive::Zip \
   Benchmark::Timer \
