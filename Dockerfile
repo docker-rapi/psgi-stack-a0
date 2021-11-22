@@ -51,36 +51,32 @@ RUN apt-get -y install postgresql-client
 
 # packages which fail tests and currently must be force installed:
 RUN cpanm --notest --force \
-  Amazon::MWS \
-  Amazon::MWS::Client \
-  Net::Server \
+  Furl \
+  OAuth2::Google::Plus \
+  Plack::App::Proxy \
   Schedule::Cron \
   Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
 
-# Workaround bad CPAN distribution metadata.
-RUN cpanm Data::TableReader Data::TableReader::Decoder::HTML \
-  || ( \
-    cd ~/.cpanm/latest-build/Data-TableReader-Decoder-HTML-0.010 \
-    && perl -pi -e 's/\b0\.09\b/0.009/g' META.json META.yml MYMETA.json MYMETA.yml Makefile Makefile.PL dist.ini \
-    && perl Makefile.PL && make && make test && make install \
-  ) \
-&& rm -rf ~/.cpanm/
-
 # packages which install properly
 RUN cpanm \
+  Algorithm::CheckDigits \
   aliased \
+  Amazon::MWS \
+  Amazon::MWS::Client \
   Archive::Zip \
   Benchmark::Timer \
   Carp::Always \
   Catalyst::Plugin::RunAfterRequest \
   Catalyst::Plugin::SimpleCAS \
+  CatalystX::OAuth2 \
   CGI::Expand \
   Config::Settings \
   Data::Dump \
   Data::Dx \
   Data::Printer \
   Data::TableReader \
+  Data::TableReader::Decoder::HTML \
   Date::RetentionPolicy \
   DateTime \
   DateTime::Format::Duration \
@@ -100,12 +96,15 @@ RUN cpanm \
   Devel::Confess \
   Devel::DDCWarn \
   Devel::NYTProf \
+  Devel::Size \
   Digest::MD5 \
   Digest::SHA1 \
   Email::Address \
   Email::MIME::CreateHTML \
   Email::Sender \
   Email::Valid \
+  Google::API::OAuth2::Client \
+  Google::OAuth2::Client::Simple \
   HTML::Diff \
   HTML::Entities \
   HTML::FormatText::WithLinks \
@@ -121,8 +120,11 @@ RUN cpanm \
   Log::Any::Adapter::Daemontools \
   Log::Any::Adapter::TAP \
   Log::Contextual::WarnLogger \
+  Log::Log4perl \
+  LWP::Authen::OAuth2 \
   LWP::UserAgent \
   Math::PercentChange \
+  Mojolicious::Plugin::OAuth2 \
   Moo \
   Moose \
   MooseX::AttributeShortcuts \
@@ -131,6 +133,12 @@ RUN cpanm \
   MooseX::Types::LoadableClass \
   MooseX::Types::Moose \
   Net::LDAP \
+  Net::OAuth2 \
+  Net::OAuth2::AuthorizationServer \
+  Net::OAuth2::Moosey::Client \
+  Net::OAuth2::Scheme \
+  Net::Server \
+  OAuth2::Google::Plus \
   Package::Stash \
   PadWalker \
   Parallel::ForkManager \
@@ -138,11 +146,26 @@ RUN cpanm \
   PDF::API2 \
   Plack::Builder \
   Plack::Middleware \
+  Plack::Middleware::Auth::OAuth2::ProtectedResource \
+  Plack::Middleware::Debug::Profiler::NYTProf \
+  Plack::Middleware::OAuth \
+  Plack::Middleware::Profiler::NYTProf \
   RapidApp::Util \
   Spreadsheet::ParseExcel \
   Spreadsheet::ParseXLSX \
   Starman \
   String::TT \
+  Syntax::Keyword::Try \
+  Task::Catalyst \
+  Task::HTML5 \
+  Task::Kensho::ExcelCSV \
+  Task::Kensho::ModuleDev \
+  Task::Kensho::OOP \
+  Task::Kensho::WebCrawling \
+  Task::Kensho::WebDev \
+  Task::Kensho::XML \
+  Task::Plack \
+  Task::Unicode \
   Term::ReadKey \
   Term::ReadLine \
   Term::Size::Any \
@@ -152,6 +175,7 @@ RUN cpanm \
   Text::Trim \
   Tie::FS \
   Tie::Hash::Indexed \
+  Time::Moment \
   Try::Tiny \
   Type::Tiny \
   WebService::Mattermost \
