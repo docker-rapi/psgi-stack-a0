@@ -1,15 +1,15 @@
-FROM rapi/psgi:1.3404
+FROM rapi/psgi:1.3500
 MAINTAINER Henry Van Styn <vanstyn@cpan.org>
 
 # --
-# rapi/psgi "stack" version is psgi-1.3404-a0-02:
+# rapi/psgi "stack" version is psgi-1.3500-a0-01:
 #
-#   psgi-1.3404 : based on rapi/psgi:1.3404
+#   psgi-1.3500 : based on rapi/psgi:1.3500
 #   a0          : this docker image is named "rapi/psgi-stack-a0"
-#   02          : sub version 02
+#   01          : sub version 01
 #
 # This is an informational/convention only datapoint:
-ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3404-a0-02
+ENV RAPI_PSGI_EXTENDED_STACK_VERSION=psgi-1.3500-a0-01
 #
 # Standard environment variables:
 ENV SHELL="/bin/bash"
@@ -200,7 +200,7 @@ RUN cpanm http://www.cpan.org/authors/id/V/VA/VANSTYN/DBIC-Violator-0.900.tar.gz
 ## docker-build command refernce:
 #
 # time docker build -t rapi/psgi-stack-a0 .
-# docker tag rapi/psgi-stack-a0 rapi/psgi-stack-a0:psgi-1.3404-a0-02
+# docker tag rapi/psgi-stack-a0 rapi/psgi-stack-a0:psgi-1.3500-a0-01
 # docker push rapi/psgi-stack-a0
 #
 
