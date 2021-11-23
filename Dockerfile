@@ -58,6 +58,16 @@ RUN cpanm --notest --force \
   Term::ReadLine::Perl \
 && rm -rf ~/.cpanm/
 
+RUN cpanm Lingua::JA::Romanize::Japanese \
+  || ( \
+    cd ~/.cpanm/latest-build/Lingua-JA-Romanize-Japanese-0.23 \
+    && perl -pi -e 's/openlab\.jp/openlab.ring.gr.jp/g' README make-dist.sh \
+      lib/Lingua/JA/Romanize/DictJA.pm \
+      lib/Lingua/JA/Romanize/Japanese.pm \
+    && perl Makefile.PL && make && make test && make install \
+  ) </dev/null \
+  && rm -rf ~/.cpanm/
+
 # packages which install properly
 RUN cpanm \
   Algorithm::CheckDigits \
