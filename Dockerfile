@@ -88,6 +88,7 @@ RUN cpanm \
   Data::Printer \
   Data::TableReader \
   Data::TableReader::Decoder::HTML \
+  Data::XLSX::Parser \
   Date::RetentionPolicy \
   DateTime \
   DateTime::Format::Duration \
@@ -154,6 +155,7 @@ RUN cpanm \
   Parallel::ForkManager \
   Path::Class \
   PDF::API2 \
+  PDF::Data \
   Plack::Builder \
   Plack::Middleware \
   Plack::Middleware::Auth::OAuth2::ProtectedResource \
