@@ -34,12 +34,15 @@ RUN apt-get -y upgrade
 
 # Install additional packages of interest.
 RUN apt-get -y install \
+  build-essential \
   colordiff \
   less \
   libterm-readkey-perl \
   man-db \
   postgresql-common \
+  rustc \
   strace \
+  sudo \
   ripgrep \
 && :
 
@@ -115,6 +118,7 @@ RUN cpanm \
   Email::MIME::CreateHTML \
   Email::Sender \
   Email::Valid \
+  FFI::Platypus::Lang::Rust \
   Google::API::OAuth2::Client \
   Google::OAuth2::Client::Simple \
   HTML::Diff \
@@ -136,6 +140,7 @@ RUN cpanm \
   LWP::Authen::OAuth2 \
   LWP::UserAgent \
   Math::PercentChange \
+  Module::Install::Rust \
   Mojolicious::Plugin::OAuth2 \
   Moo \
   Moose \
