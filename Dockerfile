@@ -34,12 +34,15 @@ RUN apt-get -y upgrade
 
 # Install additional packages of interest.
 RUN apt-get -y install \
+  build-essential \
   colordiff \
   less \
   libterm-readkey-perl \
   man-db \
   postgresql-common \
+  rustc \
   strace \
+  sudo \
   ripgrep \
 && :
 
@@ -52,6 +55,7 @@ RUN apt-get -y install postgresql-client
 # packages which fail tests and currently must be force installed:
 RUN cpanm --notest --force \
   Furl \
+  Net::Server \
   OAuth2::Google::Plus \
   Plack::App::Proxy \
   Schedule::Cron \
@@ -87,6 +91,7 @@ RUN cpanm \
   Data::Printer \
   Data::TableReader \
   Data::TableReader::Decoder::HTML \
+  Data::XLSX::Parser \
   Date::RetentionPolicy \
   DateTime \
   DateTime::Format::Duration \
@@ -113,6 +118,7 @@ RUN cpanm \
   Email::MIME::CreateHTML \
   Email::Sender \
   Email::Valid \
+  FFI::Platypus::Lang::Rust \
   Google::API::OAuth2::Client \
   Google::OAuth2::Client::Simple \
   HTML::Diff \
@@ -134,6 +140,7 @@ RUN cpanm \
   LWP::Authen::OAuth2 \
   LWP::UserAgent \
   Math::PercentChange \
+  Module::Install::Rust \
   Mojolicious::Plugin::OAuth2 \
   Moo \
   Moose \
@@ -147,13 +154,13 @@ RUN cpanm \
   Net::OAuth2::AuthorizationServer \
   Net::OAuth2::Moosey::Client \
   Net::OAuth2::Scheme \
-  Net::Server \
   OAuth2::Google::Plus \
   Package::Stash \
   PadWalker \
   Parallel::ForkManager \
   Path::Class \
   PDF::API2 \
+  PDF::Data \
   Plack::Builder \
   Plack::Middleware \
   Plack::Middleware::Auth::OAuth2::ProtectedResource \
